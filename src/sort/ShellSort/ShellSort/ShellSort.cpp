@@ -8,31 +8,22 @@
 #include "ShellSort.h"
 
 
-
-void Swap(int *a, int *b)
-{
-	if (a == NULL || b == NULL)
-	{
-		return;
-	}
-
-	int t = *a;
-	*a = *b;
-	*b = t;
-}
-
-
 void ShellSort(int data[], int n)
 {
-	int i, j;
+	int g, i, j, k;
 
-	for (int i = n / 2; i >= 1; i /= 2)
+	for (g = n / 2; g > 0; g /= 2)
 	{
-		for (int j = i; j < n; j++)
+		for (i = 0; i < g; i++)
 		{
-			if (data[j] < data[j - i])
+			for (int j = i + g; j < n; j += g)
 			{
-				Swap(&data[j - i], &data[j]);
+				int t = data[j];
+				for (k = j; k >= g && data[k] < data[k - g]; k -= g)
+				{
+					data[k] = data[k - g];
+				}
+				data[k] = t;
 			}
 		}
 	}

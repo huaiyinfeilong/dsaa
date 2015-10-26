@@ -4,7 +4,6 @@
  * Function: Quick sort algorithm.
  */
 
-#include <stdio.h>
 #include "QuickSort.h"
 
 
